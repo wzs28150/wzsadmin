@@ -23,8 +23,3 @@ import 'echarts/lib/component/geo'
 import 'echarts/lib/component/legend'
 import 'echarts/lib/component/title'
 import 'echarts/lib/component/visualMap'
-
-import HappyScroll from 'vue-happy-scroll'
-// 引入css
-import 'vue-happy-scroll/docs/happy-scroll.css'
-Vue.component('happy-scroll', HappyScroll)
