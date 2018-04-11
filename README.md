@@ -1,7 +1,7 @@
 # wzsadmin
 
 
-## Run 开发
+## 开发
 ```bash
     # 克隆项目
     git clone https://github.com/wzs28150/wzsadmin.git
