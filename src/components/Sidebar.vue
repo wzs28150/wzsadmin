@@ -76,6 +76,9 @@ max-height: 100%;
 .layout-menu-left.ivu-col.ivu-col-span-1 li {
     text-align: center;
 }
+.layout-menu-left.ivu-col.ivu-col-span-1 li i{
+    margin-right: 0px;
+}
 
 </style>
 
