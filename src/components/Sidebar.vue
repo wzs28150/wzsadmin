@@ -145,8 +145,8 @@ max-height: 100%;
 <i-col :span="spanLeft" class="layout-menu-left">
     <Menu active-name="1" theme="dark" width="auto" :accordion="true" :open-names="['1']" @on-select="onSelect">
         <div class="layout-logo-left">
-            <img class="logo_l" src="/static/img/logo_l.png" />
-            <img class="logo_r" src="/static/img/logo_r.png" />
+            <img class="logo_l" src="static/img/logo_l.png" />
+            <img class="logo_r" src="static/img/logo_r.png" />
         </div>
         <template v-for="(item,index) in siderbar_routers.children">
             <Submenu :name="index" v-if="!item.hidden&&item.children&&item.children.length>0" ref="submenu">
