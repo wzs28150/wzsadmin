@@ -66,36 +66,35 @@ export const asyncRouterMap = [
     children: [{
         path: '/dashboard',
         name: '首页',
-        icon: 'speedometer',
+        icon: 'ios-navigate',
         component: _import('Dashboard')
       },
       {
         path: '/introduction',
         name: '介绍',
-        icon: 'thumbsup',
+        icon: 'ios-navigate',
         component: _import('Introduction')
       },
       {
         path: '/components',
         name: '用户',
         redirect: '/components/role',
-        icon: 'person-stalker',
+        icon: 'ios-navigate',
         component: {
           render(c) {
             return c('router-view')
           }
         },
-        children: [
-          {
+        children: [{
             path: 'user',
             name: '所有用户',
-            icon: 'person',
+            icon: 'ios-navigate',
             component: _import('user/index')
           },
           {
             path: 'alert',
             name: '用户分组',
-            icon: 'ios-people',
+            icon: 'ios-navigate',
             component: _import('components/Alert')
           },
         ]
@@ -104,7 +103,7 @@ export const asyncRouterMap = [
         path: '/components',
         name: '组件',
         redirect: '/components/buttons',
-        icon: 'bookmark',
+        icon: 'ios-navigate',
         component: {
           render(c) {
             return c('router-view')
@@ -113,86 +112,86 @@ export const asyncRouterMap = [
         children: [{
             path: 'buttons',
             name: '按钮',
-            icon: 'social-youtube',
+            icon: 'ios-navigate',
             component: _import('components/Buttons'),
             hidden: false,
           },
           {
             path: 'hoverbuttons',
             name: '悬停特效按钮',
-            icon: 'wand',
+            icon: 'ios-navigate',
             component: _import('components/HoverButtons')
           },
           {
             path: 'alert',
             name: 'Alert警告提示',
-            icon: 'alert',
+            icon: 'ios-navigate',
             component: _import('components/Alert')
           },
           {
             path: 'card',
             name: 'Card卡片',
-            icon: 'ios-browsers-outline',
+            icon: 'ios-navigate',
             component: _import('components/Card')
           },
           {
             path: 'datepicker',
             name: 'DatePicker',
-            icon: 'ios-calendar-outline',
+            icon: 'ios-navigate',
             component: _import('components/DatePicker')
           },
           {
             path: 'form',
             name: 'Form表单',
-            icon: 'ios-list-outline',
+            icon: 'ios-navigate',
             component: _import('components/Form')
           },
           {
             path: 'modal',
             name: 'Modal对话框',
-            icon: 'ios-chatbubble-outline',
+            icon: 'ios-navigate',
             component: _import('components/Modal')
           },
           {
             path: 'select',
             name: 'Select选择器',
-            icon: 'ios-arrow-down',
+            icon: 'ios-navigate',
             component: _import('components/Select')
           },
           {
             path: 'spin',
             name: 'Spin加载中',
-            icon: 'load-d ',
+            icon: 'ios-navigate',
             component: _import('components/Spin')
           },
           {
             path: 'steps',
             name: 'Steps步骤条',
-            icon: 'ios-checkmark-outline',
+            icon: 'ios-navigate',
             component: _import('components/Steps')
           },
           {
             path: 'timeline',
             name: 'Timeline时间轴',
-            icon: 'android-more-vertical',
+            icon: 'ios-navigate',
             component: _import('components/Timeline')
           },
           {
             path: 'transfer',
             name: 'Transfer穿梭框',
-            icon: 'ios-pause-outline',
+            icon: 'ios-navigate',
             component: _import('components/Transfer')
           },
           {
             path: 'timepicker',
             name: 'Timepicker',
-            icon: 'ios-clock-outline',
+            icon: 'ios-navigate',
             component: _import('components/Timepicker')
           },
           {
             path: 'upload',
             name: 'Upload上传',
-            icon: 'ios-cloud-upload-outline',
+            icon: 'ios-navigate',
             component: _import('components/Upload')
           },
         ]
@@ -201,7 +200,7 @@ export const asyncRouterMap = [
         path: '/charts',
         name: '图表',
         redirect: '/charts/shopchart',
-        icon: 'pie-graph',
+        icon: 'ios-navigate',
         component: {
           render(c) {
             return c('router-view')
@@ -210,20 +209,20 @@ export const asyncRouterMap = [
         children: [{
             path: 'shopchart',
             name: '商场统计图表',
-            icon: 'stats-bars',
+            icon: 'ios-navigate',
             component: _import('charts/ShopChart'),
             hidden: false,
           },
           {
             path: 'radarchart',
             name: '雷达图',
-            icon: 'arrow-graph-up-right',
+            icon: 'ios-navigate',
             component: _import('charts/RadarChart')
           },
           {
             path: 'cakechart',
             name: '蛋糕销量图表',
-            icon: 'ios-analytics',
+            icon: 'ios-navigate',
             component: _import('charts/CakeChart')
           }
         ]
@@ -231,7 +230,7 @@ export const asyncRouterMap = [
       {
         path: '/table',
         name: '表格综合实例',
-        icon: 'ios-paper',
+        icon: 'ios-navigate',
         component: _import('Table'),
         meta: {
           role: ['admin']
@@ -240,7 +239,7 @@ export const asyncRouterMap = [
       {
         path: '/jsontree',
         name: 'JSON视图',
-        icon: 'merge',
+        icon: 'ios-navigate',
         component: _import('JsonTree')
       },
       {
@@ -252,13 +251,13 @@ export const asyncRouterMap = [
       {
         path: '/tinymce',
         name: 'Tinymce编辑器',
-        icon: "android-document",
+        icon: "ios-navigate",
         component: _import('Tinymce')
       },
       {
         path: '/markdown',
         name: 'Markdown',
-        icon: "android-list",
+        icon: "ios-navigate",
         component: _import('Markdown')
       },
 
@@ -274,13 +273,13 @@ export const asyncRouterMap = [
     children: [{
         path: '/home1/dashboard',
         name: 'Dashboard2',
-        icon: 'speedometer',
+        icon: 'ios-navigate',
         component: _import('Dashboard2')
       },
       {
         path: '/home1/introduction',
         name: '介绍2',
-        icon: 'thumbsup',
+        icon: 'ios-navigate',
         component: _import('Introduction')
       },
 
