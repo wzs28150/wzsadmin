@@ -10,15 +10,19 @@
 }
 
 .layout-breadcrumb {
-    padding: 10px 15px 0;
+    padding: 15px;
 }
 
 .layout-content {
     min-height: 200px;
-    margin: 15px;
+    /* margin: 15px 0; */
     overflow: hidden;
-    background: #fff;
+    /* background: #fff; */
     border-radius: 4px;
+    height: calc(100% - 108px);
+    overflow: hidden;
+    position: relative;
+    z-index: 10;
 }
 
 .layout-header .ivu-btn-text {
@@ -29,7 +33,8 @@
 }
 
 .layout-content-main {
-    padding: 10px;
+    padding: 0 10px;
+    /* height: calc(100% - 20px); */
 }
 
 .layout-copy {
@@ -55,10 +60,6 @@
     background: #fff;
     box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
 }
-
-
-
-
 
 .layout-logo-left {
     width: 90%;
@@ -108,9 +109,16 @@
                 </i-button>
                 <AppHeader/>
             </div>
-            <breadcrumb :list="list" />
+
             <div class="layout-content">
-                <div class="layout-content-main">内容区域</div>
+                <vue-scrollbar classes="my-scrollbar" ref="Scrollbar">
+                    <div class="scroll-me">
+                        <breadcrumb :list="list" />
+                        <div class="layout-content-main">
+                            <router-view></router-view>
+                        </div>
+                    </div>
+                </vue-scrollbar>
             </div>
             <div class="layout-copy">
                 2011-2016 &copy; TalkingData
@@ -124,20 +132,23 @@
 
 <script>
 
+import VueScrollbar from 'vue2-scrollbar';
 import AppHeader from '../components/Header'
 import Sidebar from '../components/Sidebar'
     // import AppAside from '../components/Aside'
     // import AppFooter from '../components/Footer'
 import Breadcrumb from '../components/Breadcrumb'
-    // require("../../static/css/vue2-scrollbar.css");
-    // require("../../static/css/app.css");
+require("../../static/css/vue2-scrollbar.css");
+require("../../static/css/app.css");
 export default {
     name: 'full',
     components: {
+        VueScrollbar,
         AppHeader,
         Sidebar,
         // AppAside,
         // AppFooter,
+
         Breadcrumb,
     },
     data() {
@@ -148,7 +159,7 @@ export default {
     },
     computed: {
         name() {
-                this.$refs.Scrollbar.scrollToY(0);
+                // this.$refs.Scrollbar.scrollToY(0);
                 return this.$route.name
             },
             list() {

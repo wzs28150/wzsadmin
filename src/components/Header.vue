@@ -37,7 +37,7 @@
 .header-item a {
     color: white !important;
 }
-
+.layout-header{ position: relative; z-index: 999;}
 .layout-header a {
     color: #495060;
     font-size: 14px;
