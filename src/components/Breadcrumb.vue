@@ -1,12 +1,19 @@
 <template>
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item" v-for="(item, index) in list">
-      <span class="active" v-if="isLast(index)">{{ showName(item) }}</span>
-      <router-link :to="item.path" v-else-if="item.path!==''">{{ showName(item) }}</router-link>
-
-      <a href="#/" v-else-if="item.path===''">{{ showName(item) }}</a>
-    </li>
-  </ol>
+  <div class="layout-breadcrumb">
+      <Breadcrumb>
+        <template v-for="(item, index) in list">
+          <Breadcrumb-item :href="item.path" v-if="isLast(index)">{{ showName(item) }}</Breadcrumb-item>
+          <span v-else-if="item.path!==''">
+            <router-link to="#" class="ivu-breadcrumb-item-link">{{ showName(item) }}</router-link>
+            <span class="ivu-breadcrumb-item-separator">/</span>
+          </span>
+          <span v-else-if="item.path===''">
+            <router-link :to="{ path: '/' }" class="ivu-breadcrumb-item-link">{{ showName(item) }}</router-link>
+            <span class="ivu-breadcrumb-item-separator">/</span>
+          </span>
+        </template>
+      </Breadcrumb>
+  </div>
 </template>
 
 <script>

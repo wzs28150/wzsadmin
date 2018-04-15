@@ -115,11 +115,6 @@ max-height: 100%;
     }
 }
 
-.layout-header {
-    .ivu-btn-text {
-        margin-top: 6px;
-    }
-}
 
 .layout-menu-left.ivu-col.ivu-col-span-1 li {
     text-align: center;
