@@ -1,9 +1,0 @@
-.vue-scrollbar__scrollbar-vertical {
-  background: rgb(66, 79, 99);
-  width: 6px;
-}
-
-.vue-scrollbar__scrollbar-vertical .scrollbar, .vue-scrollbar__scrollbar-horizontal .scrollbar {
-  background-color: rgb(101, 206, 167);
-  width: 6px;
-}
