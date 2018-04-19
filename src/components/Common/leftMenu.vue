@@ -7,17 +7,19 @@
 </el-menu>
 </div> -->
 
-	<div>
-		<el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" :unique-opened="true" >
-		<template v-for="(secMenu, index) in menuData">
-			<el-submenu :index="index" >
- 			 <template slot="title">
- 				 <i class="el-icon-location"></i>
- 				 <span>{{secMenu.title}}</span>
- 			 </template>
- 			 <el-menu-item :index="index-ind" v-for="(item, ind) in secMenu.child" @click="routerChange(item)">{{item.title}}</el-menu-item>
- 		  </el-submenu>
-		</template>
+	<div style="height:100%;">
+		<el-menu default-active="2" class="el-menu-vertical-aside" @open="handleOpen" @close="handleClose" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" :unique-opened="true" >
+		<el-scrollbar class="menu-scrollbar">
+			<template v-for="(secMenu, index) in menuData">
+				<el-submenu :index="$index">
+	 			 <template slot="title">
+	 				 <i class="el-icon-location"></i>
+	 				 <span>{{secMenu.title}}</span>
+	 			 </template>
+	 			 <el-menu-item :index="$ind"  v-for="(item, ind) in secMenu.child" @click="routerChange(item)">{{item.title}}</el-menu-item>
+	 		  </el-submenu>
+			</template>
+		</el-scrollbar>
 	 </el-menu>
 		<!-- <div v-for="secMenu in menuData">
 			<div class="c-light-gray p-l-10 m-t-15">{{secMenu.title}}</div>
@@ -57,7 +59,8 @@ export default {
 
 <style scoped>
 	.el-menu{ border-right: 0; }
-
+	.menu-scrollbar{ height: 100%; }
+	.el-menu-vertical-aside{ height: 100%; }
 </style>
 <style>
 	.el-aside .el-menu .el-menu--inline li{ background-color: rgb(67,74,80)!important; }
