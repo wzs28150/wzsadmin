@@ -1,25 +1,22 @@
 <template>
-<!-- <div>
-<el-menu mode="vertical" default-active="/table" class="el-menu-vertical-demo" @select="handleselect" theme="dark" router>
-<el-menu-item-group v-for="menu in menuData" :title="menu.title">
-<el-menu-item v-for="item in menu.items" :index="item.path">&nbsp;&nbsp;&nbsp;&nbsp;{{item.name}}</el-menu-item>
-</el-menu-item-group>
-</el-menu>
-</div> -->
-
 	<div style="height:100%;">
-		<el-menu default-active="2" class="el-menu-vertical-aside" @open="handleOpen" @close="handleClose" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" :unique-opened="true" >
-		<el-scrollbar class="menu-scrollbar">
-			<template v-for="(secMenu, index) in menuData">
-				<el-submenu :index="$index">
+		<div class="logo">
+			<img src="../../assets/images/logo_l.png" class="logo-l" alt="">
+			<img src="../../assets/images/logo_r.png" class="logo-r" alt="">
+		</div>
+		<el-menu default-active="2" class="el-menu-vertical-aside" @open="handleOpen" @close="handleClose" background-color="#23262E" text-color="#fff" active-text-color="#ffd04b" :unique-opened="true" >
+			<el-scrollbar class="menu-scrollbar">
+			<div style="height:56px"></div>
+			<template v-for="secMenu in menuData"  >
+				<el-submenu :index="secMenu.id">
 	 			 <template slot="title">
 	 				 <i class="el-icon-location"></i>
 	 				 <span>{{secMenu.title}}</span>
 	 			 </template>
-	 			 <el-menu-item :index="$ind"  v-for="(item, ind) in secMenu.child" @click="routerChange(item)">{{item.title}}</el-menu-item>
+	 			 <el-menu-item :index="item.id"  v-for="(item, ind) in secMenu.child" @click="routerChange(item)">{{item.title}}</el-menu-item>
 	 		  </el-submenu>
 			</template>
-		</el-scrollbar>
+			</el-scrollbar>
 	 </el-menu>
 		<!-- <div v-for="secMenu in menuData">
 			<div class="c-light-gray p-l-10 m-t-15">{{secMenu.title}}</div>
@@ -59,9 +56,12 @@ export default {
 
 <style scoped>
 	.el-menu{ border-right: 0; }
-	.menu-scrollbar{ height: 100%; }
 	.el-menu-vertical-aside{ height: 100%; }
+	.menu-scrollbar{ height: 100%; overflow: hidden;}
+	.logo{ overflow: hidden; position: fixed; padding: 15px 20px; left: 0; top: 0; z-index: 1; width: 160px; background-color: #23262E; }
+	.logo-l{ height: 26px; display: block;}
+	.logo-r{ height: 26px; display: block; position: absolute; right: 20px; top: 15px;}
 </style>
 <style>
-	.el-aside .el-menu .el-menu--inline li{ background-color: rgb(67,74,80)!important; }
+	.el-aside .el-menu .el-menu--inline li{ background-color: rgb(67,74,80)!important; padding-left: 53px!important; }
 </style>
