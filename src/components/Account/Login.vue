@@ -1,5 +1,7 @@
 <template>
   <div>
+  <canvas id="canvas"> 您的浏览器不支持canvas标签，请您更换浏览器 </canvas>
+  <div class="login-main">
     <el-form :model="form" :rules="rules2" ref="form" label-position="left" label-width="0px" class="demo-ruleForm card-box loginform">
       <h3 class="title">{{systemName}}</h3>
       <el-form-item prop="username">
@@ -17,6 +19,7 @@
         <el-button type="primary" style="width:100%;" v-loading="loading" @click.native.prevent="handleSubmit2('form')">登录</el-button>
       </el-form-item>
     </el-form>
+  </div>
   </div>
 </template>
 
@@ -128,12 +131,55 @@
           this.handleSubmit2('form')
         }
       })
+      var canvas = document.getElementById('canvas')
+      var can = canvas.getContext('2d')
+      var s = window.screen
+      var w = canvas.width = s.width
+      var h = canvas.height = s.height
+      can.fillStyle = color2()
+      var words = Array(256).join('1').split('')
+      setInterval(draw, 50)
+      function draw() {
+        can.fillStyle = 'rgba(31,45,61,0.05)'
+        can.fillRect(0, 0, w, h)
+        can.fillStyle = color2()
+        words.map(function(y, n) {
+          var text = String.fromCharCode(Math.ceil(65 + Math.random() * 57))
+          var x = n * 10
+          can.fillText(text, x, y)
+          words[n] = (y > 758 + Math.random() * 484 ? 0 : y + 10)
+        })
+      }
+      function color1() {
+        var colors = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f']
+        var color = ''
+        for (var i = 0; i < 6; i++) {
+          var n = Math.ceil(Math.random() * 15)
+          color += '' + colors[n]
+        }
+        return '#' + color
+      }
+      function color2() {
+        var color = Math.ceil(Math.random() * 16777215).toString(16)
+        while (color.length < 6) {
+          color = '0' + color
+        }
+        return '#' + color
+      }
+      function color3() {
+        return '#' + (function(color) {
+          return new Array(7 - color.length).join('0') + color
+        })((Math.random() * 0x1000000 << 0).toString(16))
+      }
     },
     mixins: [http]
   }
 </script>
 
-<style>
+<style scoped>
+body{ width: 100%; background: #1F2D3D;}
+.login-main{ position: relative; z-index: 1;}
+#canvas{ position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;}
 .verify-pos {
 	position: absolute;
 	right: 100px;
@@ -160,7 +206,9 @@
 }
 
 .loginform {
-	width: 350px;
+	min-width: 230px;
+  max-width: 350px;
+  width: 74%;
 	padding: 35px 35px 15px 35px;
 }
 </style>
