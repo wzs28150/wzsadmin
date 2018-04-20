@@ -1,19 +1,32 @@
 <template>
 	<el-container class="main el-row">
-		<el-aside class="el-col el-col-4" style="width: 200px;">
-				<leftMenu :menuData="menuData" :menu="menu" ref="leftMenu"></leftMenu>
+		<el-aside  :class="[el-col, el-col-4 , isCollapse ? 'is-hidden' : 'is-show' ]" >
+				<leftMenu :menuData="menuData" :menu="menu" :isCollapse="isCollapse" ref="leftMenu"></leftMenu>
 		</el-aside>
 		<el-container class="el-col el-col-20 con-right">
 			<el-header style="text-align: right; font-size: 12px">
-				 <el-dropdown>
-					 <i class="el-icon-setting" style="margin-right: 15px"></i>
-					 <el-dropdown-menu slot="dropdown">
-						 <el-dropdown-item>查看</el-dropdown-item>
-						 <el-dropdown-item>新增</el-dropdown-item>
-						 <el-dropdown-item>删除</el-dropdown-item>
-					 </el-dropdown-menu>
-				 </el-dropdown>
-				 <span>王小虎</span>
+				<el-button type="primary" icon="fa fa-bars " @click="toggleCollapse"></el-button>
+				<el-menu
+				  :default-active="activeIndex2"
+				  class="el-menu-demo"
+				  mode="horizontal"
+				  @select="switchTopMenu(menu)"
+				  background-color="#29a3fe"
+				  text-color="#fff"
+				  active-text-color="#fff" v-for="menu in topMenu" :class="{'top-active': menu.selected}" >
+				  <el-menu-item index="1">{{menu.title}}</el-menu-item>
+				</el-menu>
+		 		<el-col :span="4" class="pos-rel">
+			 		<el-dropdown @command="handleMenu" class="user-menu">
+						 <span class="el-dropdown-link c-gra" style="cursor: default">
+							 {{username}}&nbsp;&nbsp;<i class="fa fa-user" aria-hidden="true"></i>
+						 </span>
+				 	 	<el-dropdown-menu slot="dropdown">
+						 <el-dropdown-item command="changePwd">修改密码</el-dropdown-item>
+						 <el-dropdown-item command="logout">退出</el-dropdown-item>
+				 		</el-dropdown-menu>
+			 		</el-dropdown>
+				</el-col>
 			</el-header>
 			<el-scrollbar class="menu-scrollbar">
 			 <el-main>
@@ -43,7 +56,8 @@
         module: null,
         img: '',
         title: '',
-        logo_type: null
+        logo_type: null,
+        isCollapse: false
       }
     },
     methods: {
@@ -109,6 +123,10 @@
       },
       getUsername() {
         this.username = Lockr.get('userInfo').username
+      },
+      handleSelect (key, keyPath) {},
+      toggleCollapse(e) {
+        (this.isCollapse == false) ? this.isCollapse = true : this.isCollapse = false
       }
     },
     created() {
@@ -183,10 +201,14 @@
 		background-color: #23262E;
 		position: relative;
   }
+	.el-aside.is-show{ width: 200px!important; }
+	.el-aside.is-hidden{ width: 64px!important; }
 	.el-main{ overflow: hidden;}
 	.con-right{ position: relative;transform:translate(0,0);  }
 	.menu-scrollbar{ height: 100%; position: absolute; width: 100%;}
 	.el-header{ position: fixed; width: 100%; right: 0; top: 0; z-index: 999;}
+	.top-active{ width: 50%; float: left;}
+	.pos-rel{ float: right;}
 </style>
 <style>
 	.el-scrollbar__wrap{ overflow-y: scroll; overflow-x: hidden;}

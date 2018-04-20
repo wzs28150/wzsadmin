@@ -25,7 +25,7 @@ axios.defaults.headers.sessionId = Lockr.get('sessionId')
 axios.defaults.headers['Content-Type'] = 'application/json'
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: 'hash',
   base: __dirname,
   routes
 })
