@@ -1,7 +1,7 @@
 .DS_Store
 node_modules/
 dist/
-electron-quick-start-win32-x64/
+wzs-admin-win32-x64/
 npm-debug.log
 selenium-debug.log
 .idea
