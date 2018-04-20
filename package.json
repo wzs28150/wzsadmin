@@ -4,7 +4,9 @@
   "description": "vueThink made by vue2.0",
   "scripts": {
     "dev": "node build/dev-server.js",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "electron_dev": "npm run build && electron build/electron.js",
+    "electron_build": "electron-packager ./dist/ --platform=win32 --arch=x64 --icon=./favicon.ico --overwrite"
   },
   "dependencies": {
     "axios": "^0.15.3",
@@ -35,6 +37,8 @@
     "chalk": "^1.1.3",
     "connect-history-api-fallback": "^1.1.0",
     "css-loader": "^0.26.0",
+    "electron": "^1.8.4",
+    "electron-packager": "^12.0.1",
     "eslint": "^3.12.2",
     "eslint-config-vue": "^2.0.1",
     "eslint-loader": "^1.6.1",

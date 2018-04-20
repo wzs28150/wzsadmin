@@ -13,7 +13,7 @@ var useCssSourceMap = cssSourceMapDev || cssSourceMapProd
 
 // define the different HOST between development and production environment
 var DEV_HOST = JSON.stringify('http://localhost:8001/php/index.php/')
-var PUB_HOST = JSON.stringify('http://localhost:8001/php/index.php/')
+var PUB_HOST = JSON.stringify('http://api.hrbkcwl.com/php/index.php/')
 
 module.exports = {
   entry: {
@@ -87,7 +87,7 @@ module.exports = {
         loader: 'url',
         query: {
           limit: 10000,
-          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+          name: utils.assetsPath('../../fonts/[name].[hash:7].[ext]')
         }
       }
     ]
