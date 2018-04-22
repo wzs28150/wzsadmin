@@ -3,9 +3,9 @@
 		<el-aside  :class="[el-col, el-col-4 , isCollapse ? 'is-hidden' : 'is-show' ]" >
 				<leftMenu :menuData="menuData" :menu="menu" :isCollapse="isCollapse" ref="leftMenu"></leftMenu>
 		</el-aside>
-		<el-container class="el-col el-col-20 con-right">
+		<el-container class="el-col el-col-20 con-right" :class="[isCollapse ? 'is-hidden' : 'is-show' ]">
 			<el-header style="text-align: right; font-size: 12px">
-				<el-button type="primary" icon="fa fa-bars " @click="toggleCollapse"></el-button>
+				<el-button type="primary" icon="fa fa-bars" size="20" :class="[isCollapse ? 'vertical' : 'horizontal' ]" class="toggle-btn"  @click="toggleCollapse"></el-button>
 				<el-menu
 				  :default-active="activeIndex2"
 				  class="el-menu-demo"
@@ -18,7 +18,7 @@
 				</el-menu>
 		 		<el-col :span="4" class="pos-rel">
 			 		<el-dropdown @command="handleMenu" class="user-menu">
-						 <span class="el-dropdown-link c-gra" style="cursor: default">
+						 <span class="el-dropdown-link c-white" style="cursor: default">
 							 {{username}}&nbsp;&nbsp;<i class="fa fa-user" aria-hidden="true"></i>
 						 </span>
 				 	 	<el-dropdown-menu slot="dropdown">
@@ -200,16 +200,30 @@
 		height: 100%;
 		background-color: #23262E;
 		position: relative;
+		transition:width .4s,transform .4s;
   }
 	.el-aside.is-show{ width: 200px!important; }
 	.el-aside.is-hidden{ width: 64px!important; }
 	.el-main{ overflow: hidden;}
-	.con-right{ position: relative;transform:translate(0,0);  }
+	.con-right{ position: relative;transform:translate(0,0); transition:transform .4s; }
 	.menu-scrollbar{ height: 100%; position: absolute; width: 100%;}
 	.el-header{ position: fixed; width: 100%; right: 0; top: 0; z-index: 999;}
 	.top-active{ width: 50%; float: left;}
 	.pos-rel{ float: right;}
+	.toggle-btn{float: left; margin: 10px 0 10px -10px; padding: 9px 10px; font-size: 20px;	}
+	.toggle-btn:hover,.toggle-btn:focus{ background: #409EFF; border-color: #409EFF;}
+	.toggle-btn.vertical{ transform: rotate(90deg);}
+	.user-menu{ right: 0px; }
 </style>
 <style>
 	.el-scrollbar__wrap{ overflow-y: scroll; overflow-x: hidden;}
+</style>
+<style scoped>
+	@media screen and (max-width: 768px) {
+		.el-aside.is-show{ width: 200px!important; }
+		.el-aside.is-hidden{ width: 0px!important; }
+		.toggle-btn.vertical{ transform: rotate(0deg);}
+		.el-aside{ position: fixed;  z-index: 9999;}
+		.con-right.is-show{ transform: translateX(200px); transition:transform .4s;}
+	}
 </style>

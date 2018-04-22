@@ -5,58 +5,30 @@
   		  <i class="el-icon-plus"></i>&nbsp;&nbsp;添加菜单
   		</router-link>
 		</div>
-		<el-table
-		:data="tableData"
-		style="width: 100%"
-		@selection-change="selectItem">
-			<el-table-column
-			type="selection"
-			:context="_self"
-			width="50">
+		<el-table border :data="tableData" style="width: 100%" @selection-change="selectItem">
+			<el-table-column type="selection" :context="_self" width="50">
 			</el-table-column>
-			<el-table-column
-			prop="p_title"
-			label="上级菜单"
-			width="150">
+			<el-table-column prop="p_title" label="上级菜单" width="150">
 			</el-table-column>
-			<el-table-column
-			prop="title"
-			label="标题">
+			<el-table-column prop="title" label="标题">
 			</el-table-column>
-		<!-- <el-table-column
-		prop="menu_type"
-		label="类型"
-		width="200">
-		</el-table-column> -->
-			<el-table-column
-			inline-template
-			label="状态"
-			width="100">
-				<div>
-					{{ row.status | status}}
-				</div>
+			<el-table-column label="状态" width="100" >
+				<template slot-scope="scope">
+					{{ scope.row.status | status}}
+				</template>
 			</el-table-column>
-			<el-table-column
-			label="操作"
-			inline-template
-			width="200">
-				<div>
-					<span>
-						<router-link :to="{ name: 'menuEdit', params: { id: row.id }}" class="btn-link edit-btn">
+	    <el-table-column label="操作" width="200">
+	      <template slot-scope="scope">
+					<!-- <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button> -->
+					<router-link :to="{ name: 'menuEdit', params: { id: scope.row.id }}" class="btn-link edit-btn">
 						编辑
-						</router-link>
-					</span>
-					<span>
-						<el-button
-						size="small"
-						type="danger"
-						@click="confirmDelete(row)">
+					</router-link>
+					<el-button size="small" type="danger" @click="confirmDelete(scope.row)">
 						删除
-						</el-button>
-					</span>
-				</div>
-			</el-table-column>
-		</el-table>
+					</el-button>
+	      </template>
+	    </el-table-column>
+	  </el-table>
 		<div class="pos-rel p-t-20">
 			<btnGroup :selectedData="multipleSelection" :type="'menus'"></btnGroup>
 		</div>
@@ -66,7 +38,6 @@
 <script>
   import btnGroup from '../../../Common/btn-group.vue'
   import http from '../../../../assets/js/http'
-
   export default {
     data() {
       return {
@@ -97,6 +68,9 @@
         }).catch(() => {
           // handel error
         })
+      },
+      handleClick(val) {
+        console.log(val)
       }
     },
     created() {

@@ -384,7 +384,7 @@ a {
 .bg-blue {
   background: #20a0ff !important;
 }
-
+.c-white{ color: #fff; }
 .c-gray {
   color: #ccc;
 }
@@ -425,4 +425,13 @@ a {
 
 .pointer {
   cursor: pointer
+}
+body,.main{ width: 100%; overflow-x: hidden;}
+
+.el-submenu [class^=fa] {
+    vertical-align: middle;
+    margin-right: 5px;
+    width: 24px;
+    text-align: center;
+    font-size: 18px;
 }

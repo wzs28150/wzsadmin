@@ -65,6 +65,8 @@ new Vue({
   filters: filter,
   router,
   store,
-  components: { App }
-// render: h => h(Login)
+  components: {
+    App
+  }
+  // render: h => h(Login)
 }).$mount('#app')

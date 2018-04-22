@@ -1,6 +1,6 @@
 import Vue from 'vue'
-export default (function () {
-  Vue.filter('status', function (value) {
+export default (function() {
+  Vue.filter('status', function(value) {
     if (value == 1) {
       return '启用'
     } else if (value == 0) {
@@ -9,14 +9,14 @@ export default (function () {
       return '未知状态'
     }
   })
-  Vue.filter('rules', function (value) {
+  Vue.filter('rules', function(value) {
     return value
   })
-  Vue.filter('fileLink', function (value) {
+  Vue.filter('fileLink', function(value) {
     const link = window.imgUrl + value
     return link
   })
-  Vue.filter('toolType', function (value) {
+  Vue.filter('toolType', function(value) {
     let type = ''
     if (value == 1) {
       type = '系统工具'
@@ -25,11 +25,11 @@ export default (function () {
     }
     return type
   })
-  Vue.filter('numToString', function (value) {
+  Vue.filter('numToString', function(value) {
     const string = value.toString()
     return string
   })
-  Vue.filter('projectState', function (value) {
+  Vue.filter('projectState', function(value) {
     let string = ''
     switch (value) {
       case '1':
@@ -44,17 +44,17 @@ export default (function () {
     }
     return string
   })
-  Vue.filter('time', function (value) {
+  Vue.filter('time', function(value) {
     let day = moment.unix(value)
     let date = moment(day).format('YYYY/MM/DD H:mm')
     return date
   })
-  Vue.filter('date', function (value) {
+  Vue.filter('date', function(value) {
     let day = moment.unix(value)
     let date = moment(day).format('YYYY/MM/DD')
     return date
   })
-  Vue.filter('abstract', function (value) {
+  Vue.filter('abstract', function(value) {
     let abstract = ''
     if (value.length > 70) {
       abstract = value.substr(0, 70) + '...'
@@ -63,7 +63,7 @@ export default (function () {
     }
     return abstract
   })
-  Vue.filter('posStatus', function (value) {
+  Vue.filter('posStatus', function(value) {
     let status = ''
     switch (value) {
       case 1:
@@ -78,7 +78,7 @@ export default (function () {
     }
     return status
   })
-  Vue.filter('template', function (value) {
+  Vue.filter('template', function(value) {
     let template = ''
     if (value == '') {
       template = '上传'

@@ -123,6 +123,6 @@
   }
 </script>
 
-<style scoped>
-	   .edit-btn{ padding: 9px 15px; border: 1px solid #339df7; border-radius: 3px; } 
+<style>
+	  .edit-btn{ padding: 9px 15px!important; border: 1px solid #339df7; border-radius: 3px; }
 </style>

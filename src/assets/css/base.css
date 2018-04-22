@@ -104,3 +104,7 @@
   font-size: 20px;
   border-bottom: 1px solid #ccc;
 }
+
+.el-table th{
+	background-color: #eff2f7;    border-right: 1px solid #fff;
+}
