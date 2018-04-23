@@ -79,6 +79,7 @@
       }
     },
     created() {
+      console.log()
       let data = store.state.rules
       if (data && data.length) {
         this.tableDataShow = _(data).forEach((res) => {

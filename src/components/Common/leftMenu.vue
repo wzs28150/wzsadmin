@@ -48,7 +48,7 @@ export default {
   methods: {
     routerChange(item) 	{
       // 与当前页面路由相等则刷新页面
-      console.log(this.menuData)
+      // console.log(this.menuData)
       if (item.url != this.$route.path) {
         router.push(item.url)
       } else {
