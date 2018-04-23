@@ -5,6 +5,17 @@
   		  <i class="el-icon-plus"></i>&nbsp;&nbsp;添加菜单
   		</router-link>
 		</div>
+		<div role="treeitem" tabindex="-1" aria-expanded="true" draggable="false" class="el-tree-node is-expanded is-focusable">
+			<div class="el-tree-node__content" style="padding-left: 0px;">
+				<span class="el-tree-node__expand-icon el-icon-caret-right is-leaf"></span>
+				<label role="checkbox" class="el-checkbox" style="visibility: hidden;"><span aria-checked="mixed" class="el-checkbox__input">
+					<span class="el-checkbox__inner"></span>
+					<input type="checkbox" class="el-checkbox__original" value="" tabindex="-1"></span><!----></label><!----><span data-v-7377090e="" class="custom-tree-node">
+					<span data-v-7377090e="">标题</span>
+					<span data-v-7377090e=""><div class="zhuangtai">是否开启</div><div class="caozuo">操作</div></span>
+			</span>
+		</div>
+		<div role="group" aria-expanded="true" class="el-tree-node__children"></div></div>
 		<el-tree
       :data="tableData"
       show-checkbox
@@ -12,7 +23,7 @@
       default-expand-all
       :expand-on-click-node="false">
       <span class="custom-tree-node" slot-scope="{ node, data }">
-        <span>{{ node.label }}</span>
+        <span :class="data.class ? isclass : ''">{{ node.label }}</span>
         <span>
 					<el-switch
 						v-model="data.status">
@@ -22,7 +33,7 @@
 					</router-link>
 					<el-button
 						size="small"
-						type="danger"
+						type="danger" :class="data.class ? isclass : ''"
 						@click="confirmDelete(data)">
 						删除
 						</el-button>
@@ -106,10 +117,42 @@
 	font-size: 14px;
 	padding-right: 8px;
 }
-
+.el-switch{ margin-right: 25px; }
+.caozuo{
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    font-size: 14px;
+    line-height: 20px;
+    height: 20px; width: 125px;
+    vertical-align: middle;
+}
+.zhuangtai{
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    font-size: 14px;
+    line-height: 20px;
+    height: 20px;
+    vertical-align: middle;
+		margin-right: 25px;
+}
 </style>
 <style media="screen">
 .el-tree-node__content {
 	height: 40px;
+}
+.el-tree-node>.el-tree-node__content{
+	/* background-color:#eff2f7;   */
+	margin: 5px 0;
+	border: 1px solid #ddd; border-radius: 3px;
 }
 </style>
