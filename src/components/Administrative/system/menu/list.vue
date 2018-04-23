@@ -5,7 +5,7 @@
   		  <i class="el-icon-plus"></i>&nbsp;&nbsp;添加菜单
   		</router-link>
 		</div>
-		<div role="treeitem" tabindex="-1" aria-expanded="true" draggable="false" class="el-tree-node is-expanded is-focusable">
+		<div role="treeitem" tabindex="-1" aria-expanded="true" draggable="false" class="el-tree-node is-expanded is-focusable el-tree-title">
 			<div class="el-tree-node__content" style="padding-left: 0px;">
 				<span class="el-tree-node__expand-icon el-icon-caret-right is-leaf"></span>
 				<label role="checkbox" class="el-checkbox" style="visibility: hidden;"><span aria-checked="mixed" class="el-checkbox__input">
@@ -21,7 +21,8 @@
       show-checkbox
       node-key="id"
       default-expand-all
-      :expand-on-click-node="false">
+      :expand-on-click-node="false"
+			@check="selectItem">
       <span class="custom-tree-node" slot-scope="{ node, data }">
         <span :class="data.class ? isclass : ''">{{ node.label }}</span>
         <span>
@@ -58,6 +59,7 @@
     },
     methods: {
       selectItem(val) {
+        console.log(val)
         this.multipleSelection = val
       },
       confirmDelete(item) {
@@ -154,5 +156,8 @@
 	/* background-color:#eff2f7;   */
 	margin: 5px 0;
 	border: 1px solid #ddd; border-radius: 3px;
+}
+.el-tree-title .el-tree-node__content{
+	background-color:#eff2f7;
 }
 </style>
