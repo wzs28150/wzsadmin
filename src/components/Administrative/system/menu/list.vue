@@ -5,30 +5,30 @@
   		  <i class="el-icon-plus"></i>&nbsp;&nbsp;添加菜单
   		</router-link>
 		</div>
-		<el-table border :data="tableData" style="width: 100%" @selection-change="selectItem">
-			<el-table-column type="selection" :context="_self" width="50">
-			</el-table-column>
-			<el-table-column prop="p_title" label="上级菜单" width="150">
-			</el-table-column>
-			<el-table-column prop="title" label="标题">
-			</el-table-column>
-			<el-table-column label="状态" width="100" >
-				<template slot-scope="scope">
-					{{ scope.row.status | status}}
-				</template>
-			</el-table-column>
-	    <el-table-column label="操作" width="200">
-	      <template slot-scope="scope">
-					<!-- <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button> -->
-					<router-link :to="{ name: 'menuEdit', params: { id: scope.row.id }}" class="btn-link edit-btn">
+		<el-tree
+      :data="tableData"
+      show-checkbox
+      node-key="id"
+      default-expand-all
+      :expand-on-click-node="false">
+      <span class="custom-tree-node" slot-scope="{ node, data }">
+        <span>{{ node.label }}</span>
+        <span>
+					<el-switch
+						v-model="data.status">
+					</el-switch>
+					<router-link :to="{ name: 'menuEdit', params: { id: data.id }}" class="btn-link edit-btn">
 						编辑
 					</router-link>
-					<el-button size="small" type="danger" @click="confirmDelete(scope.row)">
+					<el-button
+						size="small"
+						type="danger"
+						@click="confirmDelete(data)">
 						删除
-					</el-button>
-	      </template>
-	    </el-table-column>
-	  </el-table>
+						</el-button>
+        </span>
+      </span>
+    </el-tree>
 		<div class="pos-rel p-t-20">
 			<btnGroup :selectedData="multipleSelection" :type="'menus'"></btnGroup>
 		</div>
@@ -97,3 +97,19 @@
     mixins: [http]
   }
 </script>
+<style scoped>
+.custom-tree-node {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 14px;
+	padding-right: 8px;
+}
+
+</style>
+<style media="screen">
+.el-tree-node__content {
+	height: 40px;
+}
+</style>
