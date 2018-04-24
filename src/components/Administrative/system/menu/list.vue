@@ -20,14 +20,16 @@
       :data="tableData"
       show-checkbox
       node-key="id"
+			ref="tree"
       default-expand-all
+			highlight-current
       :expand-on-click-node="false"
 			@check="selectItem">
       <span class="custom-tree-node" slot-scope="{ node, data }">
         <span :class="data.class ? isclass : ''">{{ node.label }}</span>
         <span>
 					<el-switch
-						v-model="data.status">
+						v-model="data.status"  @change="changeAttrInBtn(data.id,data.status)"> ref="switch"
 					</el-switch>
 					<router-link :to="{ name: 'menuEdit', params: { id: data.id }}" class="btn-link edit-btn">
 						编辑
@@ -58,9 +60,8 @@
       }
     },
     methods: {
-      selectItem(val) {
-        console.log(val)
-        this.multipleSelection = val
+      selectItem() {
+        this.multipleSelection = this.$refs.tree.getCheckedNodes()
       },
       confirmDelete(item) {
         this.$confirm('确认删除该菜单?', '提示', {
@@ -84,6 +85,35 @@
       },
       handleClick(val) {
         console.log(val)
+      },
+      changeAttrInBtn(id, status) {
+        let word = ''
+        if (status == true) {
+          word = '启用'
+          this.enableLoading = !this.enableLoading
+        } else {
+          this.disableLoading = !this.disableLoading
+          word = '禁用'
+        }
+        let url = 'admin/menus/enable'
+        let data = {
+          id: id,
+          status: status
+        }
+        this.apiPost(url, data).then((res) => {
+          this.handelResponse(res, (data) => {
+            _g.toastMsg('success', word + '成功')
+            setTimeout(() => {
+              _g.shallowRefresh(this.$route.name)
+            }, 1500)
+          }, () => {
+            if (status == 1) {
+              this.enableLoading = !this.enableLoading
+            } else {
+              this.disableLoading = !this.disableLoading
+            }
+          })
+        })
       }
     },
     created() {
