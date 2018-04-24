@@ -5,33 +5,59 @@
   		  <i class="el-icon-plus"></i>&nbsp;&nbsp;添加节点
   		</router-link>
 		</div>
-		<el-tree
-      :data="tableData"
-      show-checkbox
-      node-key="id"
-			ref="tree"
-      default-expand-all
-			highlight-current
-      :expand-on-click-node="false"
-			@check="selectItem">
-      <span class="custom-tree-node" slot-scope="{ node, data }">
-        <span :class="data.class ? isclass : ''">{{ node.label }}</span>
-        <span>
-					<el-switch
-						v-model="data.status"  @change="changeAttrInBtn(data.id,data.status)"> ref="switch"
-					</el-switch>
-					<router-link :to="{ name: 'menuEdit', params: { id: data.id }}" class="btn-link edit-btn">
-						编辑
-					</router-link>
-					<el-button
-						size="small"
-						type="danger" :class="data.class ? isclass : ''"
-						@click="confirmDelete(data)">
-						删除
-						</el-button>
-        </span>
-      </span>
-    </el-tree>
+		<el-table
+		:data="tableData"
+		style="width: 100%"
+		@selection-change="selectItem">
+			<el-table-column
+			type="selection"
+			:context="_self"
+			width="50">
+			</el-table-column>
+			<el-table-column
+			prop="p_title"
+			label="节点结构"
+			width="150">
+			</el-table-column>
+			<el-table-column
+			prop="title"
+			label="显示名">
+			</el-table-column>
+  		<el-table-column
+  		prop="name"
+  		label="名称"
+  		width="200">
+  		</el-table-column>
+			<el-table-column
+			inline-template
+			label="状态"
+			width="100">
+				<div>
+					{{ row.status | status}}
+				</div>
+			</el-table-column>
+			<el-table-column
+			label="操作"
+			width="200">
+        <template scope="scope">
+          <div>
+            <span>
+              <router-link :to="{ name: 'ruleEdit', params: { id: scope.row.id }}" class="btn-link edit-btn">
+              编辑
+              </router-link>
+            </span>
+            <span>
+              <el-button
+              size="small"
+              type="danger"
+              @click="confirmDelete(scope.row)">
+              删除
+              </el-button>
+            </span>
+          </div>
+        </template>
+			</el-table-column>
+		</el-table>
 		<div class="pos-rel p-t-20">
 			<btnGroup :selectedData="multipleSelection" :type="'rules'"></btnGroup>
 		</div>
@@ -75,7 +101,7 @@
       }
     },
     created() {
-      this.apiGet('admin/rules/?type=tree').then((res) => {
+      this.apiGet('admin/rules').then((res) => {
         this.handelResponse(res, (data) => {
           this.tableData = data
         })
@@ -98,41 +124,3 @@
     mixins: [http]
   }
 </script>
-<style scoped>
-.custom-tree-node {
-	flex: 1;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	font-size: 14px;
-	padding-right: 8px;
-}
-.el-switch{ margin-right: 25px; }
-.caozuo{
-    display: -webkit-inline-box;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    position: relative;
-    font-size: 14px;
-    line-height: 20px;
-    height: 20px; width: 125px;
-    vertical-align: middle;
-}
-.zhuangtai{
-    display: -webkit-inline-box;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    position: relative;
-    font-size: 14px;
-    line-height: 20px;
-    height: 20px;
-    vertical-align: middle;
-		margin-right: 25px;
-}
-</style>

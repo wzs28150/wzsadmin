@@ -104,7 +104,6 @@
         })
       },
       openRule() {
-        console.log(this.$refs.ruleList)
         this.$refs.ruleList.open()
       },
       goback() {
