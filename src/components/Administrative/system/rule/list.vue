@@ -20,7 +20,7 @@
 					<el-switch
 						v-model="data.status"  @change="changeAttrInBtn(data.id,data.status)"> ref="switch"
 					</el-switch>
-					<router-link :to="{ name: 'menuEdit', params: { id: data.id }}" class="btn-link edit-btn">
+					<router-link :to="{ name: 'ruleEdit', params: { id: data.id }}" class="btn-link edit-btn">
 						编辑
 					</router-link>
 					<el-button
@@ -51,7 +51,7 @@
     },
     methods: {
       selectItem(val) {
-        this.multipleSelection = val
+        this.multipleSelection = this.$refs.tree.getCheckedNodes()
       },
       confirmDelete(item) {
         this.$confirm('确认删除该权限?', '提示', {

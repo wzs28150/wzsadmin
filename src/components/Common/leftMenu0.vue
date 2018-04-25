@@ -80,11 +80,9 @@ export default {
 	.el-aside.is-hidden .logo{ width: 54px; padding: 15px 5px; }
 	.el-aside.is-hidden .logo .logo-l{ margin: 0 auto; transition:all .4s,transform .4s; }
 	.el-aside.is-hidden .logo .logo-r{ visibility: hidden; transform: scale(0.01); opacity: 0; z-index: -1;}
-	.el-menu--collapse .el-menu-item span, .el-menu--collapse .el-submenu>.el-submenu__title span { height: 0;
+	.el-menu--collapse>.el-menu-item span, .el-menu--collapse>.el-submenu>.el-submenu__title span { height: 0;
     width: 0; overflow: hidden; visibility: hidden; display: none; opacity: 0; transition:all .4s,transform .4s; }
-	.el-aside.is-hidden .el-menu-vertical-aside .el-menu-item span,.el-aside.is-hidden .el-menu-vertical-aside .el-submenu>.el-submenu__title span{ display: none; }
-
-
+	.el-aside.is-hidden .el-menu-vertical-aside>.el-menu-item span,.el-aside.is-hidden .el-menu-vertical-aside>.el-submenu>.el-submenu__title span{ display: none; }
 </style>
 <style>
 	.el-aside .el-menu .el-menu--inline li{ background-color: rgb(67,74,80)!important; padding-left: 53px!important; }

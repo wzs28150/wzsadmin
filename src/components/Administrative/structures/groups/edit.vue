@@ -19,20 +19,22 @@
         </el-input>
       </el-form-item>
       <el-form-item label="权限分配">
-        <div class="bor-gray h-400 ovf-y-auto bor-ra-5 bg-wh">
+        <div class="bor-gray h-400  bor-ra-5 bg-wh" style="overflow-y:hidden">
+          <el-scrollbar class="h-400">
           <div v-for="item in nodes">
             <div class="bor-b-ccc bg-gra p-l-10 p-r-10">
-              <el-checkbox v-model="item.check" @change="selectProjectRule(item)">{{item.else}}</el-checkbox>
+              <el-checkbox v-model="item.check" @change="selectProjectRule(item)">{{item.label}}</el-checkbox>
             </div>
-            <div v-for="childItem in item.child">
+            <div v-for="childItem in item.children">
               <div class="p-l-20 bor-b-ccc">
-                <el-checkbox v-model="childItem.check" @change="selectModuleRule(childItem, item, childItem.child)">{{childItem.else}}</el-checkbox>
+                <el-checkbox v-model="childItem.check" @change="selectModuleRule(childItem, item, childItem.child)">{{childItem.label}}</el-checkbox>
               </div>
               <div class="p-l-40 bor-b-ccc bg-gra">
-                <el-checkbox v-for="grandChildItem in childItem.child" v-model="grandChildItem.check" @change="selectActionRule(grandChildItem, childItem, item)">{{grandChildItem.else}}</el-checkbox>
+                <el-checkbox v-for="grandChildItem in childItem.children" v-model="grandChildItem.check" @change="selectActionRule(grandChildItem, childItem, item)">{{grandChildItem.label}}</el-checkbox>
               </div>
             </div>
           </div>
+          </el-scrollbar>
         </div>
       </el-form-item>
       <el-form-item>
@@ -136,6 +138,7 @@
                 })
               })
             })
+            console.log(this.nodes)
           })
         })
       },

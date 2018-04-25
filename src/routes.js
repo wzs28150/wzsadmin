@@ -20,7 +20,8 @@ import groupsEdit from './components/Administrative/structures/groups/edit.vue'
 import usersList from './components/Administrative/personnel/users/list.vue'
 import usersAdd from './components/Administrative/personnel/users/add.vue'
 import usersEdit from './components/Administrative/personnel/users/edit.vue'
-
+import productsList from './components/Administrative/products/list.vue'
+import dashboardindex from './components/Administrative/dashboard/index.vue'
 /**
  * meta参数解析
  * hideLeft: 是否隐藏左侧菜单，单页菜单为true
@@ -97,6 +98,22 @@ const routes = [
       { path: 'users/list', component: usersList, name: 'usersList', meta: { hideLeft: false, module: 'Administrative', menu: 'users' }},
       { path: 'users/add', component: usersAdd, name: 'usersAdd', meta: { hideLeft: false, module: 'Administrative', menu: 'users' }},
       { path: 'users/edit/:id', component: usersEdit, name: 'usersEdit', meta: { hideLeft: false, module: 'Administrative', menu: 'users' }}
+    ]
+  },
+  {
+    path: '/home',
+    component: Home,
+    children: [
+      { path: 'products/list', component: productsList, name: 'productsList', meta: { hideLeft: false, module: 'Administrative', menu: 'products' }},
+      { path: 'menu/add', component: menuAdd, name: 'menuAdd', meta: { hideLeft: false, module: 'Administrative', menu: 'menu' }},
+      { path: 'menu/edit/:id', component: menuEdit, name: 'menuEdit', meta: { hideLeft: false, module: 'Administrative', menu: 'menu' }}
+    ]
+  },
+  {
+    path: '/home',
+    component: Home,
+    children: [
+      { path: 'dashboard/index', component: dashboardindex, name: 'dashboardindex', meta: { hideLeft: false, module: 'Administrative', menu: 'dashboard' }}
     ]
   }
 ]

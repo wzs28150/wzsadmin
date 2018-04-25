@@ -123,7 +123,12 @@ const apiMethods = {
       if (data.menusList[0].url) {
         routerUrl = data.menusList[0].url
       } else {
-        routerUrl = data.menusList[0].child[0].child[0].url
+        // console.log(data)
+        if (data.menusList[0].child[0].child) {
+          routerUrl = data.menusList[0].child[0].child[0].url
+        } else {
+          routerUrl = data.menusList[0].child[0].url
+        }
       }
       setTimeout(() => {
         let path = this.$route.path

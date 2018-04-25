@@ -19,7 +19,9 @@
 		 		<el-col :span="4" class="pos-rel">
 			 		<el-dropdown @command="handleMenu" class="user-menu">
 						 <span class="el-dropdown-link c-white" style="cursor: default">
-							 {{username}}&nbsp;&nbsp;<i class="fa fa-user" aria-hidden="true"></i>
+							 {{username}}&nbsp;&nbsp;
+							 <img src="../assets/images/photo.jpg" v-if="photo"class="photo">
+							 <i class="fa fa-user-circle" aria-hidden="true" v-else ></i>
 						 </span>
 				 	 	<el-dropdown-menu slot="dropdown">
 						 <el-dropdown-item command="changePwd">修改密码</el-dropdown-item>
@@ -214,6 +216,9 @@
 	.toggle-btn:hover,.toggle-btn:focus{ background: #409EFF; border-color: #409EFF;}
 	.toggle-btn.vertical{ transform: rotate(90deg);}
 	.user-menu{ right: 0px; }
+	.photo{  width: 30px;height: 30px; vertical-align: middle; text-align: center; line-height: 28px; box-shadow: 0 0 5px #999; border-radius: 100%; overflow: hidden;}
+	.fa-user{ width: 28px;height: 28px; vertical-align: middle; text-align: center; line-height: 28px;box-shadow: 0 0 5px #ccc; border-radius: 100%;}
+	.fa-user-circle{ font-size: 30px; vertical-align: middle;}
 </style>
 <style>
 	.el-scrollbar__wrap{ overflow-y: scroll; overflow-x: hidden;}

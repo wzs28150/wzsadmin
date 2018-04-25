@@ -110,7 +110,7 @@
         router.go(-1)
       },
       getMenus() {
-        this.apiGet('admin/menus').then((res) => {
+        this.apiGet('admin/menus/?type=tree').then((res) => {
           this.handelResponse(res, (data) => {
             let array = []
             _(data).forEach((res) => {

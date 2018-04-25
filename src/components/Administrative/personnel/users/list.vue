@@ -14,6 +14,7 @@
 		</div>
 		<el-table
 		:data="tableData"
+		border
 		style="width: 100%"
 		@selection-change="selectItem">
 			<el-table-column
@@ -21,22 +22,22 @@
 			width="50">
 			</el-table-column>
 			<el-table-column
-			prop="s_name"
-			label="所属组织架构">
+			prop="a_name"
+			label="用户组" >
 			</el-table-column>
 			<el-table-column
 			label="用户名"
 			prop="username"
-			width="200">
+			>
 			</el-table-column>
 			<el-table-column
 			label="备注"
 			prop="remark"
-			width="200">
+			>
 			</el-table-column>
 			<el-table-column
 			label="状态"
-			width="100">
+			>
         <template scope="scope">
           <div>
             {{ scope.row.status | status }}
@@ -45,7 +46,7 @@
 			</el-table-column>
 			<el-table-column
 			label="操作"
-			width="200">
+			>
         <template scope="scope">
           <div>
             <span>
