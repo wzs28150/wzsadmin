@@ -100,7 +100,7 @@
       },
       getGroups() {
         this.apiGet('admin/groups').then((res) => {
-          console.log('res = ', _g.j2s(res))
+          // console.log('res = ', _g.j2s(res))
           this.handelResponse(res, (data) => {
             _(data).forEach((ret) => {
               ret.id = ret.id.toString()
@@ -127,18 +127,18 @@
               if (_.includes(this.selectedNodes, ret.id)) {
                 ret.check = true
               }
-              _(ret.child).forEach((ret1) => {
+              _(ret.children).forEach((ret1) => {
                 if (_(this.selectedNodes).includes(ret1.id)) {
                   ret1.check = true
                 }
-                _(ret1.child).forEach((ret2) => {
+                _(ret1.children).forEach((ret2) => {
                   if (_(this.selectedNodes).includes(ret2.id)) {
                     ret2.check = true
                   }
                 })
               })
             })
-            console.log(this.nodes)
+            // console.log(this.nodes)
           })
         })
       },
