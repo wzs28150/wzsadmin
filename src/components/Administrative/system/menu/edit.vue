@@ -16,7 +16,7 @@
 				</el-radio-group>
 			</el-form-item>
 			<el-form-item label="上级菜单" prop="pid">
-				<el-select disabled v-model="form.pid" placeholder="请选择活动区域" class="w-200">
+				<el-select  v-model="form.pid" placeholder="请选择活动区域" class="w-200">
 					<el-option v-for="item in options" :label="item.title" :value="item.id"></el-option>
 				</el-select>
 			</el-form-item>

@@ -10,11 +10,11 @@
 			<el-form-item label="真实姓名" prop="realname">
 				<el-input v-model.trim="form.realname" class="h-40 w-200"></el-input>
 			</el-form-item>
-			<el-form-item label="部门" prop="structure_id">
+			<!-- <el-form-item label="部门" prop="structure_id">
 				<el-select v-model="form.structure_id" placeholder="请选择部门" class="w-200">
 					<el-option v-for="item in orgsOptions" :label="item.title" :value="item.id"></el-option>
 				</el-select>
-			</el-form-item>
+			</el-form-item> -->
 			<el-form-item label="备注">
 				<el-input v-model.trim="form.remark" class="h-40 w-200"></el-input>
 			</el-form-item>
@@ -47,7 +47,6 @@
           username: '',
           password: '',
           realname: '',
-          structure_id: null,
           remark: '',
           groups: []
         },
@@ -64,9 +63,6 @@
           ],
           realname: [
             { required: true, message: '请输入真实姓名' }
-          ],
-          structure_id: [
-            { required: true, message: '请选择用户部门' }
           ]
         }
       }
@@ -87,11 +83,11 @@
         return temp
       },
       add(form) {
-        if (!this.selectCheckbox()) {
-          _g.toastMsg('warning', '请选择用户组')
-          return
-        }
-        console.log('res = ', _g.j2s(this.form))
+        // if (!this.selectCheckbox()) {
+        //   _g.toastMsg('warning', '请选择用户组')
+        //   return
+        // }
+        // console.log('res = ', _g.j2s(this.form))
         this.$refs.form.validate((pass) => {
           if (pass) {
             this.isLoading = !this.isLoading

@@ -20,9 +20,7 @@ import groupsEdit from './components/Administrative/structures/groups/edit.vue'
 import usersList from './components/Administrative/personnel/users/list.vue'
 import usersAdd from './components/Administrative/personnel/users/add.vue'
 import usersEdit from './components/Administrative/personnel/users/edit.vue'
-import productsList from './components/Products/list.vue'
-import productsAdd from './components/Products/Add.vue'
-import productsEdit from './components/Products/Edit.vue'
+import productsList from './components/Administrative/products/list.vue'
 import dashboardindex from './components/Administrative/dashboard/index.vue'
 /**
  * meta参数解析
@@ -37,36 +35,85 @@ const routes = [
     path: '/home',
     component: Home,
     children: [
-      { path: 'dashboard/index', component: dashboardindex, name: 'dashboardindex', meta: { hideLeft: false, module: 'Administrative', menu: 'dashboard' }},
-      { path: '/refresh', component: refresh, name: 'refresh' },
+      { path: '/refresh', component: refresh, name: 'refresh' }
+    ]
+  },
+  {
+    path: '/home',
+    component: Home,
+    children: [
       { path: 'menu/list', component: menuList, name: 'menuList', meta: { hideLeft: false, module: 'Administrative', menu: 'menu' }},
       { path: 'menu/add', component: menuAdd, name: 'menuAdd', meta: { hideLeft: false, module: 'Administrative', menu: 'menu' }},
-      { path: 'menu/edit/:id', component: menuEdit, name: 'menuEdit', meta: { hideLeft: false, module: 'Administrative', menu: 'menu' }},
-      { path: 'config/add', component: systemConfig, name: 'systemConfig', meta: { hideLeft: false, module: 'Administrative', menu: 'systemConfig' }},
+      { path: 'menu/edit/:id', component: menuEdit, name: 'menuEdit', meta: { hideLeft: false, module: 'Administrative', menu: 'menu' }}
+    ]
+  },
+  {
+    path: '/home',
+    component: Home,
+    children: [
+      { path: 'config/add', component: systemConfig, name: 'systemConfig', meta: { hideLeft: false, module: 'Administrative', menu: 'systemConfig' }}
+    ]
+  },
+
+  {
+    path: '/home',
+    component: Home,
+    children: [
       { path: 'rule/list', component: ruleList, name: 'ruleList', meta: { hideLeft: false, module: 'Administrative', menu: 'rule' }},
       { path: 'rule/add', component: ruleAdd, name: 'ruleAdd', meta: { hideLeft: false, module: 'Administrative', menu: 'rule' }},
-      { path: 'rule/edit/:id', component: ruleEdit, name: 'ruleEdit', meta: { hideLeft: false, module: 'Administrative', menu: 'rule' }},
+      { path: 'rule/edit/:id', component: ruleEdit, name: 'ruleEdit', meta: { hideLeft: false, module: 'Administrative', menu: 'rule' }}
+    ]
+  },
+  {
+    path: '/home',
+    component: Home,
+    children: [
       { path: 'position/list', component: positionList, name: 'positionList', meta: { hideLeft: false, module: 'Administrative', menu: 'position' }},
       { path: 'position/add', component: positionAdd, name: 'positionAdd', meta: { hideLeft: false, module: 'Administrative', menu: 'position' }},
-      { path: 'position/edit/:id', component: positionEdit, name: 'positionEdit', meta: { hideLeft: false, module: 'Administrative', menu: 'position' }},
+      { path: 'position/edit/:id', component: positionEdit, name: 'positionEdit', meta: { hideLeft: false, module: 'Administrative', menu: 'position' }}
+    ]
+  },
+  {
+    path: '/home',
+    component: Home,
+    children: [
       { path: 'structures/list', component: structuresList, name: 'structuresList', meta: { hideLeft: false, module: 'Administrative', menu: 'structures' }},
       { path: 'structures/add', component: structuresAdd, name: 'structuresAdd', meta: { hideLeft: false, module: 'Administrative', menu: 'structures' }},
-      { path: 'structures/edit/:id', component: structuresEdit, name: 'structuresEdit', meta: { hideLeft: false, module: 'Administrative', menu: 'structures' }},
+      { path: 'structures/edit/:id', component: structuresEdit, name: 'structuresEdit', meta: { hideLeft: false, module: 'Administrative', menu: 'structures' }}
+    ]
+  },
+  {
+    path: '/home',
+    component: Home,
+    children: [
       { path: 'groups/list', component: groupsList, name: 'groupsList', meta: { hideLeft: false, module: 'Administrative', menu: 'groups' }},
       { path: 'groups/add', component: groupsAdd, name: 'groupsAdd', meta: { hideLeft: false, module: 'Administrative', menu: 'groups' }},
-      { path: 'groups/edit/:id', component: groupsEdit, name: 'groupsEdit', meta: { hideLeft: false, module: 'Administrative', menu: 'groups' }},
+      { path: 'groups/edit/:id', component: groupsEdit, name: 'groupsEdit', meta: { hideLeft: false, module: 'Administrative', menu: 'groups' }}
+    ]
+  },
+  {
+    path: '/home',
+    component: Home,
+    children: [
       { path: 'users/list', component: usersList, name: 'usersList', meta: { hideLeft: false, module: 'Administrative', menu: 'users' }},
       { path: 'users/add', component: usersAdd, name: 'usersAdd', meta: { hideLeft: false, module: 'Administrative', menu: 'users' }},
       { path: 'users/edit/:id', component: usersEdit, name: 'usersEdit', meta: { hideLeft: false, module: 'Administrative', menu: 'users' }}
     ]
   },
   {
-    path: '/products',
+    path: '/home',
     component: Home,
     children: [
-      { path: 'products/list', component: productsList, name: 'productsList', meta: { hideLeft: false, module: 'Products', menu: 'products' }},
-      { path: 'products/add', component: productsAdd, name: 'productsAdd', meta: { hideLeft: false, module: 'Products', menu: 'products' }},
-      { path: 'products/edit/:id', component: productsEdit, name: 'productsEdit', meta: { hideLeft: false, module: 'Products', menu: 'products' }}
+      { path: 'products/list', component: productsList, name: 'productsList', meta: { hideLeft: false, module: 'Administrative', menu: 'products' }},
+      { path: 'menu/add', component: menuAdd, name: 'menuAdd', meta: { hideLeft: false, module: 'Administrative', menu: 'menu' }},
+      { path: 'menu/edit/:id', component: menuEdit, name: 'menuEdit', meta: { hideLeft: false, module: 'Administrative', menu: 'menu' }}
+    ]
+  },
+  {
+    path: '/home',
+    component: Home,
+    children: [
+      { path: 'dashboard/index', component: dashboardindex, name: 'dashboardindex', meta: { hideLeft: false, module: 'Administrative', menu: 'dashboard' }}
     ]
   }
 ]

@@ -7,14 +7,12 @@
 			<el-header style="text-align: right; font-size: 12px">
 				<el-button type="primary" icon="fa fa-bars" size="20" :class="[isCollapse ? 'vertical' : 'horizontal' ]" class="toggle-btn"  @click="toggleCollapse"></el-button>
 				<el-menu
-				  :default-active="activeIndex2"
 				  class="el-menu-demo"
 				  mode="horizontal"
-				  @select="switchTopMenu(menu)"
 				  background-color="#29a3fe"
 				  text-color="#fff"
-				  active-text-color="#fff" v-for="menu in topMenu" :class="{'top-active': menu.selected}" >
-				  <el-menu-item index="1">{{menu.title}}</el-menu-item>
+				  active-text-color="#fff"  >
+				  <el-menu-item index="1"  @click="switchTopMenu(menu)" v-for="(menu,index) in topMenu" :class="{'top-active': menu.selected}">{{menu.title}}</el-menu-item>
 				</el-menu>
 		 		<el-col :span="4" class="pos-rel">
 			 		<el-dropdown @command="handleMenu" class="user-menu">
@@ -94,10 +92,15 @@
         })
       },
       switchTopMenu(item) {
+        console.log(item)
         if (!item.child) {
           router.push(item.url)
         } else {
-          router.push(item.child[0].child[0].url)
+          if (item.child[0].child) {
+            router.push(item.child[0].child[0].url)
+          } else {
+            router.push(item.child[0].url)
+          }
         }
       },
       handleMenu(val) {
@@ -147,7 +150,9 @@
       this.menu = this.$route.meta.menu
       this.module = this.$route.meta.module
       this.topMenu = menus
+      console.log(this.topMenu)
       _(menus).forEach((res) => {
+        console.log(this.$route)
         if (res.module == this.module) {
           this.menuData = res.child
           res.selected = true
@@ -210,7 +215,7 @@
 	.con-right{ position: relative;transform:translate(0,0); transition:transform .4s; }
 	.menu-scrollbar{ height: 100%; position: absolute; width: 100%;}
 	.el-header{ position: fixed; width: 100%; right: 0; top: 0; z-index: 999;}
-	.top-active{ width: 50%; float: left;}
+	.top-active{float: left;}
 	.pos-rel{ float: right;}
 	.toggle-btn{float: left; margin: 10px 0 10px -10px; padding: 9px 10px; font-size: 20px;	}
 	.toggle-btn:hover,.toggle-btn:focus{ background: #409EFF; border-color: #409EFF;}
@@ -219,6 +224,7 @@
 	.photo{  width: 30px;height: 30px; vertical-align: middle; text-align: center; line-height: 28px; box-shadow: 0 0 5px #999; border-radius: 100%; overflow: hidden;}
 	.fa-user{ width: 28px;height: 28px; vertical-align: middle; text-align: center; line-height: 28px;box-shadow: 0 0 5px #ccc; border-radius: 100%;}
 	.fa-user-circle{ font-size: 30px; vertical-align: middle;}
+	.el-menu-demo{float: left;}
 </style>
 <style>
 	.el-scrollbar__wrap{ overflow-y: scroll; overflow-x: hidden;}
