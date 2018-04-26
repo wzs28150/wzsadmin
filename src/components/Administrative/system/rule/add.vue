@@ -16,7 +16,7 @@
       </el-form-item>
       <el-form-item label="父节点" prop="pid">
         <el-select v-model="form.pid" placeholder="父节点" class="w-200">
-          <el-option v-for="item in options" :label="item.title" :value="item.id"></el-option>
+          <el-option v-for="item in options" :label="item.name" :value="item.id"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item>
@@ -41,7 +41,7 @@
           pid: null,
           level: '1'
         },
-        options: [{ id: 0, title: '根节点' }],
+        options: [{ id: 0, title: '根节点', name: '根节点' }],
         rules: {
           title: [
             { required: true, message: '请输入节点名称' }

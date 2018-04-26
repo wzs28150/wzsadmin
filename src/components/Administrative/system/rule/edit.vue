@@ -15,8 +15,11 @@
         </el-radio-group>
       </el-form-item>
       <el-form-item label="父节点" prop="pid">
-        <el-select v-model="form.pid" placeholder="父节点" class="w-200" disabled>
-          <el-option v-for="item in options" :label="item.title" :value="item.id"></el-option>
+        <el-select v-model="form.pid" placeholder="父节点" class="w-200" v-if="group_id === 15">
+          <el-option v-for="item in options" :label="item.name" :value="item.id"></el-option>
+        </el-select>
+        <el-select v-model="form.pid" placeholder="父节点" class="w-200" v-else disabled>
+          <el-option v-for="item in options" :label="item.name" :value="item.id"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item>
@@ -42,7 +45,7 @@
           pid: null,
           level: null
         },
-        options: [{ id: 0, name: '根节点' }],
+        options: [{ id: 0, name: '根节点', title: '根节点' }],
         rules: {
           title: [
             { required: true, message: '请输入节点名称' }
@@ -56,7 +59,8 @@
           pid: [
             { type: 'number', required: true, message: '请选择父级节点' }
           ]
-        }
+        },
+        group_id: 0
       }
     },
     methods: {
@@ -81,6 +85,7 @@
         this.apiGet('admin/rules').then((res) => {
           this.handelResponse(res, (data) => {
             this.options = this.options.concat(data)
+            console.log(this.options)
           })
         })
       },
@@ -95,6 +100,9 @@
       }
     },
     created() {
+      let userInfo = Lockr.get('userInfo')
+      this.group_id = userInfo.group_id
+      this.user_id = 0
       this.getRules()
       this.getRuleInfo()
     },

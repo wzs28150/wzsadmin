@@ -92,7 +92,7 @@
         })
       },
       switchTopMenu(item) {
-        console.log(item)
+        item.selected = true
         if (!item.child) {
           router.push(item.url)
         } else {
@@ -150,9 +150,9 @@
       this.menu = this.$route.meta.menu
       this.module = this.$route.meta.module
       this.topMenu = menus
-      console.log(this.topMenu)
+      // console.log(this.topMenu)
       _(menus).forEach((res) => {
-        console.log(this.$route)
+        // console.log(this.$route)
         if (res.module == this.module) {
           this.menuData = res.child
           res.selected = true

@@ -5,6 +5,17 @@
   		  <i class="el-icon-plus"></i>&nbsp;&nbsp;添加节点
   		</router-link>
 		</div>
+		<div role="treeitem" tabindex="-1" aria-expanded="true" draggable="false" class="el-tree-node is-expanded is-focusable el-tree-title">
+			<div class="el-tree-node__content" style="padding-left: 0px;">
+				<span class="el-tree-node__expand-icon el-icon-caret-right is-leaf"></span>
+				<label role="checkbox" class="el-checkbox" style="visibility: hidden;"><span aria-checked="mixed" class="el-checkbox__input">
+					<span class="el-checkbox__inner"></span>
+					<input type="checkbox" class="el-checkbox__original" value="" tabindex="-1"></span><!----></label><!----><span data-v-7377090e="" class="custom-tree-node">
+					<span data-v-7377090e="">标题</span>
+					<span data-v-7377090e=""><div class="zhuangtai">是否开启</div><div class="caozuo">操作</div></span>
+			</span>
+		</div>
+		<div role="group" aria-expanded="true" class="el-tree-node__children"></div></div>
 		<el-tree
       :data="tableData"
       show-checkbox
