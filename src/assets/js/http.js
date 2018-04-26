@@ -94,10 +94,10 @@ const apiMethods = {
               router.replace('/')
             }, 1500)
             break
-          // case 400:
-          //   this.goback()
-          //   break
-          default :
+            // case 400:
+            //   this.goback()
+            //   break
+          default:
             _g.toastMsg('error', res.error)
         }
       } else {
@@ -112,12 +112,12 @@ const apiMethods = {
           res.selected = false
         }
       })
-      Lockr.set('menus', data.menusList)              // 菜单数据
-      Lockr.set('authKey', data.authKey)              // 权限认证
-      Lockr.set('rememberKey', data.rememberKey)      // 记住密码的加密字符串
-      Lockr.set('authList', data.authList)            // 权限节点列表
-      Lockr.set('userInfo', data.userInfo)            // 用户信息
-      Lockr.set('sessionId', data.sessionId)          // 用户sessionid
+      Lockr.set('menus', data.menusList) // 菜单数据
+      Lockr.set('authKey', data.authKey) // 权限认证
+      Lockr.set('rememberKey', data.rememberKey) // 记住密码的加密字符串
+      Lockr.set('authList', data.authList) // 权限节点列表
+      Lockr.set('userInfo', data.userInfo) // 用户信息
+      Lockr.set('sessionId', data.sessionId) // 用户sessionid
       window.axios.defaults.headers.authKey = Lockr.get('authKey')
       let routerUrl = ''
       if (data.menusList[0].url) {
@@ -138,6 +138,10 @@ const apiMethods = {
           _g.shallowRefresh(this.$route.name)
         }
       }, 1000)
+      setTimeout(() => {
+        var canvas = document.getElementsByTagName('canvas')
+        document.body.removeChild(canvas[0])
+      }, 5000)
     },
     reAjax(url, data) {
       return new Promise((resolve, reject) => {

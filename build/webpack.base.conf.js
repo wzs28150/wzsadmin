@@ -48,7 +48,10 @@ module.exports = {
   module: {
     preLoaders: [{
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: [
+          path.join(__dirname, '../node_modules'),
+          path.join(__dirname, '../src/assets/js/loginbg')
+        ],
         loader: 'eslint'
       },
       {
@@ -65,7 +68,10 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel',
         include: projectRoot,
-        exclude: /node_modules/,
+        exclude: [
+          path.join(__dirname, '../node_modules'),
+          path.join(__dirname, '../src/assets/js/loginbg')
+        ],
         query: {
           presets: ['es2015', 'stage-3']
         }

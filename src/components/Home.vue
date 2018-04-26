@@ -135,6 +135,7 @@
       }
     },
     created() {
+      document.body.className = ' '
       this.getTitleAndLogo()
       let authKey = Lockr.get('authKey')
       let sessionId = Lockr.get('sessionId')
