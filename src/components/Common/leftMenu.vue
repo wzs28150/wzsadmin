@@ -74,10 +74,10 @@ export default {
 	.el-menu{ border-right: 0; }
 	.el-menu-vertical-aside{ height: 100%; transition:width .4s,transform .4s; }
 	.menu-scrollbar{ height: 100%; overflow: hidden;}
-	.logo{ overflow: hidden; position: fixed; padding: 15px 20px; left: 0; top: 0; z-index: 1; width: 160px; background-color: #23262E; transition:width .4s,transform .4s; }
+	.logo{ overflow: hidden; position: fixed; padding: 15px 20px; left: 0; top: 0; z-index: 1; width: 160px; background-color: #23262E; transition:width .4s,padding .4s,transform .4s; overflow: hidden;}
 	.logo-l{ height: 26px; display: block; transition:all .4s,transform .4s; position: relative; z-index: 1; }
 	.logo-r{ height: 26px; display: block; position: absolute; right: 20px; top: 15px; transition:transform .4s; opacity: 1; }
-	.el-aside.is-hidden .logo{ width: 54px; padding: 15px 5px; }
+	.el-aside.is-hidden .logo{ width: 54px; padding: 15px 5px; transition:width .4s,padding .4s,transform .4s; }
 	.el-aside.is-hidden .logo .logo-l{ margin: 0 auto; transition:all .4s,transform .4s; }
 	.el-aside.is-hidden .logo .logo-r{ visibility: hidden; transform: scale(0.01); opacity: 0; z-index: -1;}
 	.el-menu--collapse .el-menu-item span, .el-menu--collapse .el-submenu>.el-submenu__title span { height: 0;
