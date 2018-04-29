@@ -138,10 +138,6 @@ const apiMethods = {
           _g.shallowRefresh(this.$route.name)
         }
       }, 1000)
-      setTimeout(() => {
-        var canvas = document.getElementsByTagName('canvas')
-        document.body.removeChild(canvas[0])
-      }, 5000)
     },
     reAjax(url, data) {
       return new Promise((resolve, reject) => {

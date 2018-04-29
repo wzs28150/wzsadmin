@@ -1,6 +1,7 @@
 import Login from './components/Account/Login.vue'
 import refresh from './components/refresh.vue'
 import Home from './components/Home.vue'
+import dashboardindex from './components/Administrative/dashboard/index.vue'
 import menuList from './components/Administrative/system/menu/list.vue'
 import menuAdd from './components/Administrative/system/menu/add.vue'
 import menuEdit from './components/Administrative/system/menu/edit.vue'
@@ -20,10 +21,16 @@ import groupsEdit from './components/Administrative/structures/groups/edit.vue'
 import usersList from './components/Administrative/personnel/users/list.vue'
 import usersAdd from './components/Administrative/personnel/users/add.vue'
 import usersEdit from './components/Administrative/personnel/users/edit.vue'
+
 import productsList from './components/Products/list.vue'
 import productsAdd from './components/Products/Add.vue'
 import productsEdit from './components/Products/Edit.vue'
-import dashboardindex from './components/Administrative/dashboard/index.vue'
+
+import pcIndex from './components/Pc/index.vue'
+
+import weappIndex from './components/Weapp/index.vue'
+
+import wechatList from './components/Wechat/list.vue'
 /**
  * meta参数解析
  * hideLeft: 是否隐藏左侧菜单，单页菜单为true
@@ -67,6 +74,27 @@ const routes = [
       { path: 'products/list', component: productsList, name: 'productsList', meta: { hideLeft: false, module: 'Products', menu: 'products' }},
       { path: 'products/add', component: productsAdd, name: 'productsAdd', meta: { hideLeft: false, module: 'Products', menu: 'products' }},
       { path: 'products/edit/:id', component: productsEdit, name: 'productsEdit', meta: { hideLeft: false, module: 'Products', menu: 'products' }}
+    ]
+  },
+  {
+    path: '/pc',
+    component: Home,
+    children: [
+      { path: 'pc/index', component: pcIndex, name: 'pcIndex', meta: { hideLeft: false, module: 'Pc', menu: 'pc' }}
+    ]
+  },
+  {
+    path: '/wechat',
+    component: Home,
+    children: [
+      { path: 'wechat/list', component: wechatList, name: 'wechatList', meta: { hideLeft: false, module: 'Wechat', menu: 'wechat' }}
+    ]
+  },
+  {
+    path: '/weapp',
+    component: Home,
+    children: [
+      { path: 'weapp/index', component: wechatList, name: 'weappIndex', meta: { hideLeft: false, module: 'Weapp', menu: 'weapp' }}
     ]
   }
 ]

@@ -10,9 +10,12 @@
 			</el-form-item>
 			<el-form-item label="菜单类型" prop="menu_type">
 				<el-radio-group v-model="form.menu_type">
-					<el-radio disabled label="1">普通三级菜单</el-radio>
-					<el-radio disabled label="2">单页菜单</el-radio>
-					<el-radio disabled label="3">外链</el-radio>
+					<el-radio v-if="group_id === 15" label="1">普通三级菜单</el-radio>
+					<el-radio v-else disabled label="1">普通三级菜单</el-radio>
+					<el-radio v-if="group_id === 15" label="2">单页菜单</el-radio>
+					<el-radio v-else disabled label="2">单页菜单</el-radio>
+					<el-radio v-if="group_id === 15" label="3">外链</el-radio>
+					<el-radio v-else disabled label="3">外链</el-radio>
 				</el-radio-group>
 			</el-form-item>
 			<el-form-item label="上级菜单" prop="pid">
@@ -82,7 +85,8 @@
           pid: [
             { type: 'number', required: true, message: '请选择上级菜单' }
           ]
-        }
+        },
+        group_id: 0
       }
     },
     methods: {
@@ -124,6 +128,8 @@
       }
     },
     created() {
+      let userInfo = Lockr.get('userInfo')
+      this.group_id = userInfo.group_id
       this.getMenus()
       this.id = this.$route.params.id
       this.apiGet('admin/menus/' + this.id).then((res) => {

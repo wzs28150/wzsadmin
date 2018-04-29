@@ -142,7 +142,7 @@
         // this.getAllOrgs()
         this.groupOptions = await this.getAllGroups()
         this.apiGet('admin/users/' + this.id).then((res) => {
-          console.log('res = ', _g.j2s(res))
+          // console.log('res = ', _g.j2s(res))
           this.handelResponse(res, (data) => {
             this.form.username = data.username
             this.form.realname = data.realname

@@ -12,7 +12,7 @@
 				  background-color="#29a3fe"
 				  text-color="#fff"
 				  active-text-color="#fff"  >
-				  <el-menu-item index="1"  @click="switchTopMenu(menu)" v-for="(menu,index) in topMenu" :class="{'top-active': menu.selected}">{{menu.title}}</el-menu-item>
+				  <el-menu-item :index="menu.title"  @click="switchTopMenu(menu)" v-for="menu in topMenu" :class="[menu.selected ? 'is-active' : '']">{{menu.title}}</el-menu-item>
 				</el-menu>
 		 		<el-col :span="4" class="pos-rel">
 			 		<el-dropdown @command="handleMenu" class="user-menu">
@@ -92,7 +92,8 @@
         })
       },
       switchTopMenu(item) {
-        item.selected = true
+        console.log(this.topMenu)
+        // item.selected = true
         if (!item.child) {
           router.push(item.url)
         } else {
