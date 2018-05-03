@@ -21,7 +21,7 @@
       show-checkbox
       node-key="id"
 			ref="tree"
-      default-expand-all
+      
 			highlight-current
       :expand-on-click-node="false"
 			@check="selectItem">

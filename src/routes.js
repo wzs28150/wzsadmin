@@ -44,7 +44,7 @@ const routes = [
     path: '/home',
     component: Home,
     children: [
-      { path: 'dashboard/index', component: dashboardindex, name: 'dashboardindex', meta: { hideLeft: false, module: 'Administrative', menu: 'dashboard' }},
+      { path: 'dashboard/index', component: dashboardindex, name: 'dashboard', meta: { hideLeft: false, module: 'Administrative', menu: 'dashboard' }},
       { path: '/refresh', component: refresh, name: 'refresh' },
       { path: 'menu/list', component: menuList, name: 'menuList', meta: { hideLeft: false, module: 'Administrative', menu: 'menu' }},
       { path: 'menu/add', component: menuAdd, name: 'menuAdd', meta: { hideLeft: false, module: 'Administrative', menu: 'menu' }},

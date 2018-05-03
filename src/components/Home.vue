@@ -14,7 +14,15 @@
 				  active-text-color="#fff"  >
 				  <el-menu-item :index="menu.title"  @click="switchTopMenu(menu)" v-for="menu in topMenu" :class="[menu.selected ? 'is-active' : '']">{{menu.title}}</el-menu-item>
 				</el-menu>
-		 		<el-col :span="4" class="pos-rel">
+		 		<el-col :span="3" class="pos-rel">
+					<el-menu
+					  class="clearcache"
+					  mode="horizontal"
+					  background-color="#29a3fe"
+					  text-color="#fff"
+					  active-text-color="#fff" >
+					  <el-menu-item index="1"  @click="clearCache" >清除缓存</el-menu-item>
+					</el-menu>
 			 		<el-dropdown @command="handleMenu" class="user-menu">
 						 <span class="el-dropdown-link c-white" style="cursor: default">
 							 {{username}}&nbsp;&nbsp;
@@ -27,6 +35,7 @@
 				 		</el-dropdown-menu>
 			 		</el-dropdown>
 				</el-col>
+
 			</el-header>
 			<el-scrollbar class="menu-scrollbar">
 			 <el-main>
@@ -92,7 +101,7 @@
         })
       },
       switchTopMenu(item) {
-        console.log(this.topMenu)
+        // console.log(this.topMenu)
         // item.selected = true
         if (!item.child) {
           router.push(item.url)
@@ -133,6 +142,23 @@
       handleSelect (key, keyPath) {},
       toggleCollapse(e) {
         (this.isCollapse == false) ? this.isCollapse = true : this.isCollapse = false
+      },
+      clearCache() {
+        _g.openGlobalLoading()
+        let data = {
+          authkey: Lockr.get('authKey'),
+          sessionId: Lockr.get('sessionId'),
+          id: Lockr.get('userInfo').id
+        }
+        this.apiPost('admin/base/clearcache', data).then((res) => {
+          _g.closeGlobalLoading()
+          this.handelResponse(res, (data) => {
+            _g.toastMsg('success', '清除成功')
+            setTimeout(() => {
+              router.replace('/')
+            }, 1500)
+          })
+        })
       }
     },
     created() {
@@ -218,15 +244,16 @@
 	.menu-scrollbar{ height: 100%; position: absolute; width: 100%;}
 	.el-header{ position: fixed; width: 100%; right: 0; top: 0; z-index: 999;}
 	.top-active{float: left;}
-	.pos-rel{ float: right;}
+	.pos-rel{ float: right; width: auto;}
 	.toggle-btn{float: left; margin: 10px 0 10px -10px; padding: 9px 10px; font-size: 20px;	}
 	.toggle-btn:hover,.toggle-btn:focus{ background: #409EFF; border-color: #409EFF;}
 	.toggle-btn.vertical{ transform: rotate(90deg);}
-	.user-menu{ right: 0px; }
+	.user-menu{ right: 0px; position: relative;}
 	.photo{  width: 30px;height: 30px; vertical-align: middle; text-align: center; line-height: 28px; box-shadow: 0 0 5px #999; border-radius: 100%; overflow: hidden;}
 	.fa-user{ width: 28px;height: 28px; vertical-align: middle; text-align: center; line-height: 28px;box-shadow: 0 0 5px #ccc; border-radius: 100%;}
 	.fa-user-circle{ font-size: 30px; vertical-align: middle;}
 	.el-menu-demo{float: left;}
+	.clearcache{float: left; margin-right: 20px;}
 </style>
 <style>
 	.el-scrollbar__wrap{ overflow-y: scroll; overflow-x: hidden;}
